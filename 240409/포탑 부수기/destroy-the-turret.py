@@ -24,16 +24,22 @@ K턴 반복, 부서지지 않은 포탑 1개가 있으면 즉시 중지
 import sys
 from collections import deque
 
+
 def find_defender(atx,aty):
+
     max_p = 0
     temp = []
     for i in range(N):
         for j in range(M):
-            if 0 < board[i][j] and board[i][j] >= max_p and i != atx and j!=aty:
+            if 0 < board[i][j] and board[i][j] >= max_p:
+                if i == atx and j==aty:
+                    continue
                 max_p = board[i][j]
-                temp.append([board[i][j],attack_turn[i][j],i,j])
-
+                temp.append([board[i][j], attack_turn[i][j], i, j])
+    # print(temp)
     temp.sort(key=lambda x: (x[0], -x[1], -(x[2] + x[3]), -x[3]), reverse=True)
+    # for elem in board:
+    #     print(*elem)
     return temp[0]
 
 def find_attacker():
@@ -144,12 +150,20 @@ for turn in range(1,K+1):
             if board[i][j] > 0 and attacked[i][j] == 0:
                 board[i][j]+=1
 
+    # cnt = 0
+    # for i in range(N):
+    #     for j in range(M):
+    #         if board[i][j] != 0:
+    #             cnt+=1
+    # if cnt < 2:
+    #     print(1)
+    #     break
     # for elem in board:
     #     print(*elem)
-
-max_power = 0
-for i in range(N):
-    for j in range(M):
-        if board[i][j] > max_power:
-            max_power = board[i][j]
-print(max_power)
+else:
+    max_power = 0
+    for i in range(N):
+        for j in range(M):
+            if board[i][j] > max_power:
+                max_power = board[i][j]
+    print(max_power)
