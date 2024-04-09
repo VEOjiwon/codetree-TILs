@@ -24,7 +24,6 @@ K턴 반복, 부서지지 않은 포탑 1개가 있으면 즉시 중지
 import sys
 from collections import deque
 
-
 def find_defender(atx,aty):
 
     max_p = 0
@@ -37,7 +36,7 @@ def find_defender(atx,aty):
                 max_p = board[i][j]
                 temp.append([board[i][j], attack_turn[i][j], i, j])
     # print(temp)
-    temp.sort(key=lambda x: (-x[0], x[1], x[2] + x[3], x[3]))
+    temp.sort(key=lambda x: (x[0], -x[1], -(x[2] + x[3]), -x[3]), reverse=True)
 
     # for elem in board:
     #     print(*elem)
@@ -52,7 +51,7 @@ def find_attacker():
                 min_p = board[i][j]
                 temp.append([board[i][j], attack_turn[i][j], i, j])
 
-    temp.sort(key=lambda x: (x[0], -x[1], x[2] + x[3], x[3]))
+    temp.sort(key=lambda x: (x[0], -x[1], -(x[2] + x[3]), -x[3]))
     return temp[0]
 # 우하좌상
 dxs = [0,1,0,-1]
