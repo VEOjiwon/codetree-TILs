@@ -57,7 +57,7 @@ def find_attacker():
 dxs = [0,1,0,-1]
 dys = [1,0,-1,0]
 def laser():
-    dist =[[0]* N for _ in range(M)]
+    dist =[[0]* M for _ in range(N)]
     q = deque()
     q.append((atx,aty))
     dist[atx][aty] = 1
@@ -68,6 +68,7 @@ def laser():
         for d in range(4):
             nx = (x + dxs[d]) % N
             ny = (y + dys[d]) % M
+
             if board[nx][ny] > 0 and dist[nx][ny]==0:
                 dist[nx][ny] = dist[x][y] + 1
                 q.append((nx, ny))
@@ -111,6 +112,8 @@ def shot():
     for d in range(8):
         nx = (dfx + ddxs[d]) % N
         ny = (dfy + ddys[d]) % M
+
+
         if board[nx][ny] !=0:
             sp_damaged.append((nx,ny))
     splash = atpower // 2
@@ -150,20 +153,19 @@ for turn in range(1,K+1):
             if board[i][j] > 0 and attacked[i][j] == 0:
                 board[i][j]+=1
 
-    # cnt = 0
-    # for i in range(N):
-    #     for j in range(M):
-    #         if board[i][j] != 0:
-    #             cnt+=1
-    # if cnt < 2:
-    #     print(1)
-    #     break
-    # for elem in board:
-    #     print(*elem)
-else:
-    max_power = 0
+    cnt = 0
     for i in range(N):
         for j in range(M):
-            if board[i][j] > max_power:
-                max_power = board[i][j]
-    print(max_power)
+            if board[i][j] > 0:
+                cnt+=1
+    if cnt < 2:
+        break
+    # for elem in board:
+    #     print(*elem)
+
+max_power = 0
+for i in range(N):
+    for j in range(M):
+        if board[i][j] > max_power:
+            max_power = board[i][j]
+print(max_power)
