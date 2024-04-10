@@ -3,7 +3,7 @@ a = input().strip()
 li = []
 for c in a:
     li.append(c)
-a = li
+a = li[::-1]
 
 max_val = -1
 for i in range(len(a)):
@@ -17,11 +17,5 @@ for i in range(len(a)):
         comp += int(a[len(a)-i-1]) * (k**2)
     if comp >= max_val:
         max_val = comp
-b = li
-tt = 0
-for l in range(0,len(a)):
-    tt += int(a[len(a)-i-1]) * (k**2)
-if tt< max_val:
-    print(max_val)
-else:
-    tt
+
+print(max_val)
