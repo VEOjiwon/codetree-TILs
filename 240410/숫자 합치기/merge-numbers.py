@@ -9,7 +9,9 @@ for i in range(n//2):
     nums = nums[2:]
     for j in range(len(nums)):
         if nums[j] < val:
-            nums.insert(j-1,val)
+            nums.insert(j,val)
+            break
+    
 
 cost += sum(nums)
 print(cost)
