@@ -14,10 +14,8 @@ while i <n:
         if local_max < range_sum:
             local_max = range_sum
         elif range_sum < 0:
-            i+=k
+            i+=k-1
             break
-        
-        
 
     ans = max(ans, local_max)
     i+=1
