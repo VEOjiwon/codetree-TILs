@@ -6,10 +6,10 @@ ans = -1248000
 i = 0
 while i <n:
     
-    range_sum = vec[i]
+    range_sum = 0
     local_max = -127000
     
-    for k in range(i+1,n):
+    for k in range(i,n):
         range_sum += vec[k]
         if local_max < range_sum:
             local_max = range_sum
