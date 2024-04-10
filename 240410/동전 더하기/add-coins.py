@@ -10,6 +10,6 @@ for val in money:
     if tmp == 0:
         print(ans)
         break
-    if tmp // val > 0:
-        ans = ans + (tmp//val)
+    if tmp // val >= 0:
+        ans += (tmp//val)
         tmp = tmp % val
