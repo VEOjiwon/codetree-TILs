@@ -10,7 +10,7 @@ ans = 0
 for num in nums:
     heapq.heappush(q, num)
 
-while len(pq) > 1:
+while len(q) > 1:
     x1 = heapq.heappop(q)
     x2 = heapq.heappop(q)
 
