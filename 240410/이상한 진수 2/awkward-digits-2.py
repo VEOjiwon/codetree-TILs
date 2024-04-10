@@ -1,21 +1,22 @@
 import sys
-a = input().strip()
-li = []
+
+a = sys.stdin.readline().rstrip()
+la = []
 for c in a:
-    li.append(c)
-a = li[::-1]
-
+    la.append(int(c))
+n = len(la)
 max_val = -1
-for i in range(len(a)):
-    if a[i] == '1':
-        a[i] = '0'
+for i in range(n):
+    if la[i] == 0:
+        la[i] = 1
     else:
-        a[i] = '1'
-    tmp = int(''.join(a))
-    comp = 0
-    for k in range(0,len(a)):
-        comp += int(a[len(a)-i-1]) * (k**2)
-    if comp >= max_val:
-        max_val = comp
-
+        la[i] = 0
+    decimal = 0
+    for k in range(n):
+        decimal += la[n-k-1] * (k**2)
+    max_val = max(max_val, decimal)
+    if la[i] == 0:
+        la[i] = 1
+    else:
+        la[i] = 0
 print(max_val)
