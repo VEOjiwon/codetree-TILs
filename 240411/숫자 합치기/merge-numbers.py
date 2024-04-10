@@ -11,10 +11,10 @@ for num in nums:
     heapq.heappush(q, num)
 
 while len(pq) > 1:
-    x1 = heapq.heappop(pq)
-    x2 = heapq.heappop(pq)
+    x1 = heapq.heappop(q)
+    x2 = heapq.heappop(q)
 
     ans += (x1+x2)
-    heapq.hezppus(pq,x1+x2)
+    heapq.hezppus(q,x1+x2)
 
 print(ans)
