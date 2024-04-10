@@ -8,7 +8,7 @@ for i in range(n//2):
     cost += val
     nums = nums[2:]
     for j in range(len(nums)):
-        if nums[j] < val:
+        if nums[j] <= val:
             nums.insert(j,val)
             break
     
