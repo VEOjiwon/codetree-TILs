@@ -11,8 +11,9 @@ while i <n:
     
     for k in range(i+1,n):
         range_sum += vec[k]
-        local_max = max(local_max,range_sum)
-        if range_sum < 0:
+        if local_max < range_sum:
+            local_max = range_sum
+        elif range_sum < 0:
             i+=k
             break
         
