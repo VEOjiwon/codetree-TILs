@@ -17,4 +17,11 @@ for i in range(len(a)):
         comp += int(a[len(a)-i-1]) * (k**2)
     if comp >= max_val:
         max_val = comp
-print(max_val)
+b = li
+tt = 0
+for l in range(0,len(a)):
+    tt += int(a[len(a)-i-1]) * (k**2)
+if tt< max_val:
+    print(max_val)
+else:
+    tt
