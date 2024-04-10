@@ -15,6 +15,6 @@ while len(q) > 1:
     x2 = heapq.heappop(q)
 
     ans += (x1+x2)
-    heapq.hezppus(q,x1+x2)
+    heapq.heappush(q,x1+x2)
 
 print(ans)
