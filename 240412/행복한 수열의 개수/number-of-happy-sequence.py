@@ -7,10 +7,10 @@ if m == 1:
     print(2*n)
 else:
     for i in range(n):
-        tmp=1
+        tmp=0
         tmax = 0
         cmax = 0
-        ctmp = 1
+        ctmp = 0
         for j in range(n):
             if i ==0:
                 prev2 = board[j][i]
@@ -18,19 +18,20 @@ else:
                 ctmp +=1
                 cmax = max(cmax,ctmp)
             else:
-                ctmp = 1
+                ctmp = 0
             prev2 = board[j][i]
+            
             if j==0:
                 prev = board[i][j]
             elif prev == board[i][j]:
                 tmp+=1
                 tmax = max(tmax,tmp)
             else:
-                tmp = 1
+                tmp = 0
             prev = board[i][j]
 
-        if tmax>=m:
+        if tmax>=m-1:
             ans+=1
-        if cmax>=m:
+        if cmax>=m-1:
             ans+=1
     print(ans)
