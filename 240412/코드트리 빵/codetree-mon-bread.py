@@ -25,17 +25,22 @@ basecamp = []
 people = []
 in_board = [0] * m
 
-# 이동 못하는 경우 -1
-# 편의점 초기 위치는 2로
-# basecamp 1
+
+# 편의점 초기 위치는 -2로, 도착 시 -1
+# basecamp -> 초기엔 -3, 해당 idx 번호로
+# 비어있는 칸 -> -4
+
 for x,y in dest:
-    board[x][y] = 2
+    board[x][y] = -2
 
 # basecamp 좌표 저장
 for i in range(n):
     for j in range(n):
+        if board[i][j] == 0:
+            board[i][j] = -4
         if board[i][j] == 1:
             basecamp.append((i,j))
+            board[i][j] = -3
 
 # menhattan distance
 def get_dist(x1,x2,y1,y2):
@@ -47,7 +52,7 @@ def find_basecamp(cur):
     comp = []
     tx, ty = dest[cur]
     for idx, (cx,cy) in enumerate(basecamp):
-        if board[cx][cy] != -1:
+        if board[cx][cy] == -3:
             comp.append([get_dist(tx,cx,ty,cy),cx,cy])
     comp.sort(key= lambda x: (x[0],x[1],x[2]))
     return comp[0]
@@ -57,31 +62,38 @@ def in_range(x,y):
 
 
 def moving_people():
-    arrive_this = []
+    global board
     for i in range(m):
         if in_board[i] ==0:
             continue
         cx,cy = people[i]
         tx,ty = dest[i]
-        cur_dist = get_dist(cx,tx,cy,ty)
+        temp = []
         for j in range(4):
             nx = cx + dxs[j]
             ny = cy + dys[j]
-            if in_range(nx,ny) and board[nx][ny] !=-1 and cur_dist > get_dist(nx,tx,ny,ty):
-                # 편의점 도착 시
-                if nx == tx and ny == ty:
-                    in_board[i] = 0
-                    arrive_this.append((tx,ty))
+            if in_range(nx,ny) and (board[nx][ny] == -4 or board[nx][ny]==i or board[nx][ny] == -2 or board[nx][ny] == -3):
+                temp.append([get_dist(nx, tx, ny, ty),j,nx,ny])
 
-                people[i] = [nx, ny]
-                break
+        temp.sort(key=lambda x: (x[0],x[1]))
+        _,_, gx,gy = temp[0]
 
-    # 편의점 도착 경우 사람들 다 이동후 방출
-    for x,y in arrive_this:
-        board[x][y] = -1
+        if gx == tx and gy == ty:
+
+            in_board[i] = 0
+            board[tx][ty] = -1
+
+        people[i] = [gx, gy]
+
+
 
 
 turn = 0
+# print('turn :', turn)
+# print(people)
+# print(dest)
+# for elem in board:
+#     print(*elem)
 while True:
     # 편의점이 모두 통행 불가능한 경우 (사람이 가있는 경우)
     cnt = 0
@@ -104,8 +116,16 @@ while True:
 
     if bx != -1:
         # 사람들 이동후 통행 불가
-        board[bx][by] = -1
-
+        board[bx][by] = turn
     if newbie !=-1:
         in_board[turn] = 1
+
+    if turn > 9:
+        break
+
     turn +=1
+    # print('turn :', turn)
+    # print(people)
+    # print(dest)
+    # for elem in board:
+    #     print(*elem)
