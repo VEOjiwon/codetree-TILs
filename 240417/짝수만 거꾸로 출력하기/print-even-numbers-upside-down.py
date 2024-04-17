@@ -1,7 +1,10 @@
 n = int(input())
 arr = list(map(int, input().split()))
-arr.sort()
 
+tmp = []
 for i in arr:
     if i % 2 ==0:
-        print(i, end=' ')
+        tmp.append(i)
+tmp.reverse()
+
+print(*tmp)
