@@ -3,7 +3,7 @@ board = list(list(map(int, input().split())) for _ in range(n))
 ans = 0
 
 if n == 1 and k == 1:
-    print(1)
+    print(2)
 else:
 
     for i in range(n):
