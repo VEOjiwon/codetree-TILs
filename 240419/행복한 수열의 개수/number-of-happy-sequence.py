@@ -5,7 +5,7 @@ ans = 0
 for i in range(n):
     max_conseq = 1
     local_max = 0
-    for j in range(1, n+1):
+    for j in range(1, n):
         if board[i][j-1] == board[i][j]:
             max_conseq +=1
             
@@ -18,7 +18,7 @@ for i in range(n):
 for i in range(n):
     max_conseq = 1
     local_max = 0
-    for j in range(1, n+1):
+    for j in range(1, n):
         if board[j][i] == board[j-1][i]:
             max_conseq +=1
         else:
