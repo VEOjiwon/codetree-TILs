@@ -7,9 +7,10 @@ for i in range(n):
     for j in range(n-1):
         if board[i][j] == board[i][j+1]:
             max_conseq +=1
-            local_max = max(local_max, max_conseq)
+            
         else:
             max_conseq=1
+        local_max = max(local_max, max_conseq)
     if local_max >=k:
         ans+=1
 
@@ -19,9 +20,9 @@ for i in range(n):
     for j in range(n-1):
         if board[j][i] == board[j+1][i]:
             max_conseq +=1
-            local_max = max(local_max, max_conseq)
         else:
             max_conseq=1
+        local_max = max(local_max, max_conseq)
     if local_max >=k:
         ans+=1
 print(ans)
