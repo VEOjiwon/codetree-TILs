@@ -2,8 +2,8 @@ n,k = map(int, input().split())
 board = list(list(map(int, input().split())) for _ in range(n))
 ans = 0
 
-if k == 1:
-    print(n*n)
+if n == 1 and k == 1:
+    print(1)
 else:
 
     for i in range(n):
