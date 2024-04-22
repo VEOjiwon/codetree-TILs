@@ -6,7 +6,6 @@ ans = -1
 
 for i in range(n):
     for j in range(m):
-
         if i < n-1 and j < m-1:
             # 첫 번쨰
             tmp = 0
@@ -17,14 +16,14 @@ for i in range(n):
                     tmp_min = min(tmp_min, board[k][l])
             ans = max(ans, tmp - tmp_min)
         # 두 번째
-        if j < m - 3:
+        if j <= m - 3:
             tmp = 0
-            for k in range(j,j+4):
+            for k in range(j,j+3):
                 tmp+= board[i][k]
-            ans = max(ans, tmp - tmp_min)
-        if i < n - 3:
+            ans = max(ans, tmp)
+        if i <= n - 3:
             tmp = 0
-            for k in range(i,i+4):
+            for k in range(i,i+3):
                 tmp+= board[k][j]
-            ans = max(ans, tmp - tmp_min)
+            ans = max(ans, tmp)
 print(ans)
