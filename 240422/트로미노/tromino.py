@@ -17,14 +17,14 @@ for i in range(n):
                     tmp_min = min(tmp_min, board[k][l])
             ans = max(ans, tmp - tmp_min)
         # 두 번째
-        if j < n - 3:
+        if j < m - 3:
             tmp = 0
-            for k in range(j,j+3):
+            for k in range(j,j+4):
                 tmp+= board[i][k]
             ans = max(ans, tmp - tmp_min)
         if i < n - 3:
             tmp = 0
-            for k in range(i,i+3):
+            for k in range(i,i+4):
                 tmp+= board[k][j]
             ans = max(ans, tmp - tmp_min)
 print(ans)
