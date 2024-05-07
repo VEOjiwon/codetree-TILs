@@ -13,8 +13,8 @@ def search_square(grid,n,m):
     # 직사각형 꼭지점 좌표 4개
     for i in range(n):
         for j in range(m):
-            for k in range(i,n):
-                for l in range(j,m):
+            for k in range(i+1,n):
+                for l in range(j+1,m):
                     if is_pos(i,j,k,l):
                         size = (k-i+1) * (l-j+1)
                         max_size = max(max_size, size)
