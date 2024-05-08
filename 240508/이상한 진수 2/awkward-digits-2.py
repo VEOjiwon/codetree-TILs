@@ -14,4 +14,9 @@ for i in range(len(arr)):
         num = convert_decimal(arr)
         ans = max(ans, num)
         arr[i] = '0'
+    else:
+        arr[i] ='0'
+        num = convert_decimal(arr)
+        ans = max(ans, num)
+        arr[i] = '1'
 print(ans)
