@@ -1,11 +1,12 @@
 arr = list(input())
 
 def convert_decimal(arr):
-    arr.reverse()
+    
     num = 0
     for i in range(len(arr)):
-        num += ((i)**2)*int(arr[i])
+        num += ((len(arr)-i-1)**2)*int(arr[i])
     return num
+    
 ans = convert_decimal(arr)
 for i in range(len(arr)):
     if arr[i] == '0':
