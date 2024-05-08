@@ -1,5 +1,5 @@
-r,c = map(int, input().split())
-board = list(list(input().split()))
+n,m = map(int, input().split())
+board = list(list(input().split()) for _ in range(n))
 
 cnt = 0
 for i in range(1,n):
