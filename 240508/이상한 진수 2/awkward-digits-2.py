@@ -7,7 +7,7 @@ def convert_decimal(arr):
         num += ((len(arr)-i-1)**2)*int(arr[i])
     return num
     
-ans = convert_decimal(arr)
+ans = 0
 for i in range(len(arr)):
     if arr[i] == '0':
         arr[i] ='1'
